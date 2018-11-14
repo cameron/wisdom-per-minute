@@ -1,0 +1,81 @@
+<div class="sq-reinstall-wrapper">
+  <!-- these styles are here and not in parent-frame.css to
+       decouple them from the
+    -->
+  <style>
+    * {
+      border: 0;
+      margin: 0;
+      padding: 0;
+      font-weight: inherit;
+      font-size: inherit;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    .sq-reinstall {
+      font-family: Georgia, serif;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: white;
+      text-align: center;
+      padding-top: 3em;
+      position: absolute;
+      z-index: 9999999999999999999999999;
+    }
+
+    h1, h2, h3, h4, p{
+      font-size: 18px;
+      font-family: Georgia;
+      color: #222;
+      margin: 1.2em 1em 1.4em 1em;
+      border: 0;
+    }
+
+    h2 {
+      font-size: 2.5em;
+    }
+
+    h3 {
+      font-size: 2em;
+    }
+
+    h4 {
+      font-size: 1.3em;
+      color: #555;
+    }
+
+    a, a:visited, a:hover, a:link {
+       color: #2FA1EE;
+    }
+
+    .sq-logo {
+      width: 90px;
+      height: 90px;
+    }
+
+    .favicon-logo {
+      width: 16px;
+      height: 16px;
+      position:relative;
+    }
+
+    .sq-close-reinstall {
+      color: #999 !important;
+      font-size: 1.2em;
+      display: block;
+      margin-top: 1.2em;
+    }
+  </style>
+  <div class="sq-reinstall">
+    <img class='sq-logo' src='//squirt.io/images/logo.png'/>
+    <h2>Your bookmarklet is smelling a little fishy...</h2>
+    <h3>Drag this fresh one to your bookmarks bar: <a class="sq-bm" href="javascript:(function(){sq=window.sq=window.sq||{};if(sq.script){sq.again();}else{sq.bookmarkletVersion='0.3.0';sq.iframeQueryParams={host:'//squirt.io',userId:'--squirtUser--',};sq.script=document.createElement('script');sq.script.src=sq.iframeQueryParams.host+'/bookmarklet/frame.outer.js';document.body.appendChild(sq.script);}})();">Squirt</a></h3>
+    <h4>Need help? Visit the <a href='http://squirt.io/install.html'>install page</a></h4>
+    <h4><a href="http://squirt.io/change-log.html">What's new</a></h4>
+    <a class="sq-close-reinstall" href="">Back</a>
+  </div>
+</div>
