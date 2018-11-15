@@ -55,7 +55,7 @@ var rebuildNodes = function willGetReplaced(){};
 
 
 var subverstitute = function(text) {
-  userSettings.get('subs').map(function(sub) {
+  userSettings.get('subs', []).map(function(sub) {
     text = text.replace(new RegExp(sub[0],'gi'), sub[1]);
   });
   return text;
