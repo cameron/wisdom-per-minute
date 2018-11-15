@@ -217,7 +217,9 @@ var c = {
   wpm: function(wpm){
     _wpm = wpm;
     intervalMs = 60 * 1000 / wpm;
-    sq.duration = (c.nodes.length * intervalMs / 1000 / 60).toFixed(1);
+    if (c.nodes) {
+      sq.duration = (c.nodes.length * intervalMs / 1000 / 60).toFixed(1);
+    }
   },
 
   seek: function(location){
@@ -256,5 +258,7 @@ var c = {
     return contextNodes(5);
   }
 };
+
+c.wpm(400)
 
 module.exports = c;

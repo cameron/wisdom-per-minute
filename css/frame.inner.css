@@ -158,8 +158,10 @@ input {
   font-family: "Helvetica Neue", "Arial", sans-serif;
   color: rgba(196, 196, 196, 1);
   padding: 1.2em;
-  padding-bottom: 3em;
   line-height: 2.1em;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
 }
 
 .toolbar .ss-icon{
@@ -210,11 +212,9 @@ input {
 }
 
 .wpm{
-  position: absolute;
   margin: 0 auto;
   margin-top: -1px;
   font-size: 1.7em;
-  left: 25%;
 }
 
 .wpm .btn {
@@ -260,7 +260,7 @@ input {
 
 .reader {
   box-shadow: 0 0px 6px rgba(0,0,0,.3);
-  height: 280px;
+  height: 580px;
   position: relative;
 }
 
@@ -268,7 +268,7 @@ input {
   font-family: Georgia, serif;
   position: absolute;
   height: 100%;
-  left: 45%;
+  left: 50%;
   width: 55%;
   border-left: 1px solid rgba(0,0,0, .2);
   font-size: 2em;
