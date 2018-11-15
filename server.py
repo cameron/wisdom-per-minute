@@ -11,6 +11,14 @@ def index(path):
   return app.send_static_file(path)
 
 
+@app.route('/text/')
+def list_texts():
+  return Response(json.dumps({
+    'texts': [' '.join([word.capitalize() for word in title.replace('-', ' ').replace('.txt', '').split(' ')])
+              for title in os.listdir('texts')],
+  }), mimetype='application/json')
+
+
 @app.route('/text/<int:idx>')
 def text(idx):
   text_files = os.listdir('texts')

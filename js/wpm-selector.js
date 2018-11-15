@@ -4,7 +4,7 @@ var sq = require('./sq'),
 
 var wpm = dom.qs('.wpm-count');
 
-dom.bind("{{wpm}}", sq, wpm);
+dom.bind("{{wpm}}", sq, wpm, {wpm: 400});
 
 evt.on('squirt.wpm.echo', wpm.render);
 

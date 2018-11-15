@@ -162,21 +162,21 @@ var dom = {
   },
 
   // data binding... *cough*
-  bind: function(expr, data, el){
-    el.render = dom.render.bind(null, expr, data, el);
+  bind: function(expr, data, el, defaults){
+    el.render = dom.render.bind(null, expr, data, el, defaults);
     return evt.on('squirt.els.render', function(){
       el.render();
     });
   },
 
-  render: function(expr, data, el){
+  render: function(expr, data, el, defaults){
     var match,
         exprRx = /{{\s?([^\s}]+)\s?}}/g,
         rendered = expr;
 
     while(match = exprRx.exec(expr)){
       if(match.length < 2) continue;
-      rendered = rendered.replace(match[0], data[match[1]]);
+      rendered = rendered.replace(match[0], data[match[1]] || defaults[match[1]]);
     }
     el.textContent = rendered;
   },

@@ -23,6 +23,11 @@
   font-size: 1.3em;
   margin: 2em 0 2em 0;
   font-style: italic;
+  display: block;
+}
+
+.title option {
+  text-align: center;
 }
 
 body {
@@ -269,9 +274,8 @@ input {
   position: absolute;
   height: 100%;
   left: 50%;
-  width: 55%;
   border-left: 1px solid rgba(0,0,0, .2);
-  font-size: 2em;
+  font-size: 5em;
 }
 
 .reader.sans .carousel {
@@ -280,7 +284,7 @@ input {
 
 
 .nodes{
-  top: 38%;
+  top: 35%;
   position: relative;
   width: 99999999999999999999999999%;
 }
@@ -292,6 +296,7 @@ input {
   transition: opacity .1s ease-in-out;
   -moz-transition: opacity .1s ease-in-out;
   -webkit-transition: opacity .1s ease-in-out;
+
 }
 
 .playing .word{
@@ -322,7 +327,7 @@ input {
 
 .focus-indicator-gap {
   position: absolute;
-  top: 33%;
+  top: 30%;
   background-color: #FDFDFD;
   width: 2px;
   left: -2px;

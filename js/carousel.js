@@ -117,6 +117,7 @@ function centerOnFocus(){
 function contextNodes(ctxNodeRange){
   var nodes = [];
   var idx = Math.max(0, nodeIdx); // hack -- nodeIdx is -1 on start
+  if (!c.nodes) return console.log('nodes not yet set')
   return c.nodes
          .slice(Math.max(0,idx - ctxNodeRange), idx)
          .concat(
