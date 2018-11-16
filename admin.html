@@ -1,35 +1,98 @@
 <html>
   <head>
     <style>
+      body {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        font-size: 4em;
+      }
+
       .subs-list {
         width: 300px;
         height: 200px;
         border: 1px solid #999;
       }
-      input {
-      width: 300px;
-      height: 50px;
-      display:block;
-      background-color: #99CCFF;
-      margin-top:30px;
-      border: 10px solid rgba(255, 255, 255, .2);
-      color: white;
-      font-size: 1em;
+
+      input[type="submit"] {
+        padding: .5em;
+        width: 100%;
+        display:block;
+        margin-top:30px;
+        border: 3px solid rgba(0,0,0, .1);
+      font-size: .6em;
+      background-color: rgba(0,0,0,.02);
+      color: #777;
+      cursor: pointer;
+      font-family: "serif";
+      }
+
+      input[type="submit"]:hover {
+      background-color: rgba(0,0,0,.2);
+      }
+
+      input[type="text"] {
+        padding: .02em .2em;
+        font-size: .8em;
+        width: 100%;
+      border: 3px solid rgba(0,0,0, .1);
+      font-family: "serif";
+      position: relative;
       }
 
       em {
-      margin-top: 30px;
-      display: block;
-      color: #BBB;
+        margin-top: 30px;
+        display: block;
+      color: #777;
+      font-size: .7em;
+      width: 40%;
+      text-align: left;
       }
+
+      .list {
+        display: none;
+      }
+
+      .small {
+      font-size: .4em;
+      }
+
+      .find-replace {
+      width: 40%;
+      position: relative;
+      }
+
+      label {
+      position: absolute;
+      left:-64%;
+      font-size: .7em;
+      font-style: italic;
+      margin-top: .15em;
+      }
+      .with {
+        left: -15%;
+      }
+      .search-term {
+        margin-bottom: .4em;
+      }
+
     </style>
   </head>
 <body>
-  <center>
-  <textarea class='subs-list'></textarea><br/>
-  <input type='submit' class='update-subs' value='Subverstitute'/>
-  <em>In the end we shall make thoughtcrime literally impossible, <br>because there will be no words in which to express it.</em>
-  </center>
+  <em>the texts our community has selected as canon are noble but imperfect.<br/><br/>your editorial input is vital to our stability.</em>
+  <div class='find-replace'>
+    <label>replace occurrences of</label>
+    <input type='text' class='search-term' placeholder='e.g., dao'><br>
+    <label class='with'>with</label>
+    <input type='text' class='replacement' placeholder='e.g., dude'>
+    <input type='submit' class='submit-sub' value='make it so'/>
+  </div>
+  <div class='list'>
+    <textarea class='subs-list'></textarea><br/>
+    <input type='submit' class='update-subs' value='update'/>
+  </div>
+  <em class='small'>In the end we shall make thoughtcrime literally impossible, <br>because there will be no words in which to express it.</em>
   <script src='../admin.js'></script>
 </body>
 </html>
