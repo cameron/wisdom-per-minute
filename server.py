@@ -24,8 +24,10 @@ def text(idx):
   text_files = os.listdir('texts')
   idx = idx % len(text_files)
 
-  res = {'title': text_files[idx].replace('-', ' ').replace('.txt', ''),
-         'text':open(os.path.join('texts', text_files[idx])).read()}
+  res = {
+    'title': text_files[idx].replace('-', ' ').replace('.txt', ''),
+    'text': open(os.path.join('texts', text_files[idx])).read().decode('utf-8',errors='ignore')
+  }
   return Response(json.dumps(res),
                   mimetype="application/json")
 

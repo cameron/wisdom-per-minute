@@ -90,7 +90,21 @@ function advanceNode(){
   waitOnNode(c.nodes[nodeIdx]).then(advanceNode);
 };
 
+var sliceSize = 30;
 function focusOnNodeAtIdx(idx) {
+  if (!c.nodesSlice ||
+      idx < c.nodesSliceStart + 10 ||
+      idx > c.nodesSliceStart + sliceSize - 10) {
+    nodesContainer.innerHTML = '';
+    if (getNextNodeIdx == incrementNodeIdx) {
+      c.nodesSliceStart = Math.max(0, idx - 10);
+    } else {
+      c.nodesSliceStart = Math.max(0, idx + 10 - sliceSize);
+    }
+    c.nodesSlice = c.nodes.slice(c.nodesSliceStart, c.nodesSliceStart + sliceSize);
+    dom.appendChildren(nodesContainer, c.nodesSlice);
+  }
+
   // the focusNodePrev business avoids animating
   // the focusNode from opacity 1 to 0, which is otherwise
   // incurred by the opacity transition applied to .word
@@ -111,7 +125,7 @@ function focusOnNodeAtIdx(idx) {
 
 function centerOnFocus(){
   var orpNode = focusNode.querySelector('.orp');
-  nodesContainer.style.left = "-" + (orpNode.offsetLeftCached + orpNode.offsetWidthCached / 2) + "px";
+  nodesContainer.style.left = "-" + (orpNode.offsetLeft + orpNode.offsetWidth / 2) + "px";
 };
 
 function contextNodes(ctxNodeRange){
@@ -151,7 +165,7 @@ function hideContextNodes(extraSlow){
 
 var linearLeft = {target: 'left', type: 'linear'};
 function constantPPSTransition(directionIdx){
-  var distance = Math.abs(focusNode.orp.offsetLeftCached - c.nodes[nodeIdx + directionIdx].orp.offsetLeftCached);
+  var distance = Math.abs(focusNode.orp.offsetLeft - c.nodes[nodeIdx + directionIdx].orp.offsetLeft);
   var ms =  distance * 1000 / seekPPS.current;
   return dom.transition(nodesContainer, ms, linearLeft);
 }
@@ -196,6 +210,8 @@ var c = {
   hide: dom.hide.bind(null, carousel),
   show: dom.show.bind(null, carousel),
   nodes: null,
+  nodesSlice: null,
+  nodesSliceStart: NaN,
 
   pause: function(){
     if(!sq.playing) return;
@@ -240,10 +256,7 @@ var c = {
   },
 
   setNodes: function(childNodes, preserveIdx){
-    nodesContainer.innerHTML = '';
-    dom.appendChildren(nodesContainer, childNodes, true);
     c.nodes = childNodes;
-    var shouldHide;
 
     // cache offsets to optimize rendering
     childNodes.map(function(node){
